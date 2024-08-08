@@ -1,10 +1,27 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import PlaylistPage from "./pages/Playlist";
+import TrackPage from "./pages/Track";
 
 const App: React.FC = () => {
 	return (
-		<div className='flex justify-center items-center h-screen bg-gray-100'>
-			<h1 className='text-3xl font-bold text-blue-500'>Hello, World!</h1>
-		</div>
+		<Router>
+			<Routes>
+				<Route
+					path='/'
+					element={<Home />}
+				/>
+				<Route
+					path='/playlist/:userId'
+					element={<PlaylistPage />}
+				/>
+				<Route
+					path='/track/:userId/:playlistId/:trackUri'
+					element={<TrackPage />}
+				/>
+			</Routes>
+		</Router>
 	);
 };
 

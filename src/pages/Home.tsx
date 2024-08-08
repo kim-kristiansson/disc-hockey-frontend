@@ -1,10 +1,13 @@
 import React from "react";
-import ExampleComponent from "../components/ExampleComponent";
+import AuthButton from "../components/AuthButton";
 
 const Home: React.FC = () => {
 	return (
-		<div>
-			<ExampleComponent />
+		<div className='p-4'>
+			<h1 className='text-2xl mb-4'>
+				Welcome to Spotify Playlist Manager
+			</h1>
+			<AuthButton />
 		</div>
 	);
 };
