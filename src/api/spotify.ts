@@ -1,12 +1,33 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:3000"; // Adjust this to your backend URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+const REDIRECT_URI = import.meta.env.VITE_SPOTIFY_REDIRECT_URI;
+const SCOPES = [
+	"playlist-modify-public",
+	"playlist-modify-private",
+	"user-read-private",
+	"user-read-email",
+];
 
-export const getAuthorizeURL = async () => {
-	const response = await axios.get(`${API_BASE_URL}/auth/login`, {
-		withCredentials: true,
-	});
-	return response.data;
+export const getAuthorizeURL = (): string => {
+	const state = generateRandomString(16);
+	const scope = SCOPES.join(" ");
+
+	return `https://accounts.spotify.com/authorize?response_type=code&client_id=${CLIENT_ID}&scope=${encodeURIComponent(
+		scope
+	)}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&state=${state}`;
+};
+
+const generateRandomString = (length: number): string => {
+	let text = "";
+	const possible =
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	for (let i = 0; i < length; i++) {
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+	return text;
 };
 
 export const createPlaylist = async (

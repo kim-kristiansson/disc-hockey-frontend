@@ -1,13 +1,23 @@
 import React from "react";
-import AuthButton from "../components/AuthButton";
+import { getAuthorizeURL } from "../api/spotify";
 
 const Home: React.FC = () => {
+	const handleLogin = () => {
+		const url = getAuthorizeURL();
+		window.location.href = url;
+	};
+
 	return (
 		<div className='p-4'>
 			<h1 className='text-2xl mb-4'>
 				Welcome to Spotify Playlist Manager
 			</h1>
-			<AuthButton />
+			<button
+				onClick={handleLogin}
+				className='bg-blue-500 text-white py-2 px-4 rounded'
+			>
+				Login with Spotify
+			</button>
 		</div>
 	);
 };

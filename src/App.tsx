@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import PlaylistPage from "./pages/Playlist";
 import TrackPage from "./pages/Track";
+import Callback from "./pages/Callback";
 
 const App: React.FC = () => {
 	return (
@@ -19,6 +20,10 @@ const App: React.FC = () => {
 				<Route
 					path='/track/:userId/:playlistId/:trackUri'
 					element={<TrackPage />}
+				/>
+				<Route
+					path='/callback'
+					element={<Callback />}
 				/>
 			</Routes>
 		</Router>
