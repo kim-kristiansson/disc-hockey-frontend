@@ -108,7 +108,7 @@ describe('Button component', () => {
         });
 
         it('should be 48px in height with icon', () => {
-            render(<Button icon={<DummyIcon />} text="Test Button" onClick={() => { } } ariaLabel={''} />);
+            render(<Button icon={DummyIcon} text="Test Button" onClick={() => { } } ariaLabel={''} />);
       
             const button = screen.getByRole('button');
             const computedStyle = window.getComputedStyle(button);
@@ -123,7 +123,7 @@ describe('Button component', () => {
               <Button 
                 text="Play Music"
                 onClick={() => {}}
-                icon={<DummyIcon />} 
+                icon={DummyIcon} 
                 ariaLabel={'Arial Label'} 
               />
             );
@@ -139,5 +139,65 @@ describe('Button component', () => {
             expect(heightInPx).toBe('24px');
         });
         
+        it('should render an icon with a width and height of 24px even with other dimension set', () => {
+            render(
+              <Button 
+                text="Play Music"
+                onClick={() => {}}
+                icon={DummyIcon} 
+                iconProps={{ ariaLabel: 'Dummy Icon' }}
+                ariaLabel={'Arial Label'} 
+              />
+            );
+        
+            const icon = screen.getByRole('img');
+        
+            const computedStyle = window.getComputedStyle(icon);
+
+            const widthInPx = remToPx(computedStyle.width);
+            const heightInPx = remToPx(computedStyle.height);
+        
+            expect(widthInPx).toBe('24px');
+            expect(heightInPx).toBe('24px');
+        });
+        
+        it('should override the aria-label of the icon if specified in iconProps', () => {
+            render(
+                <Button 
+                    text="Play Music"
+                    onClick={() => {}}
+                    icon={DummyIcon} 
+                    iconProps={{ ariaLabel: "Custom Icon Label" }} 
+                    ariaLabel="Play Music Button"
+                />
+            );
+    
+            // Check if the aria-label is correctly set on the icon
+            const icon = screen.getByLabelText('Custom Icon Label');
+            expect(icon).toBeInTheDocument();
+    
+            // Ensure the button's aria-label is also set correctly
+            const button = screen.getByLabelText('Play Music Button');
+            expect(button).toBeInTheDocument();
+        });
+
+        it('should use the default aria-label if no custom label is provided in iconProps', () => {
+            render(
+                <Button 
+                    text="Play Music"
+                    onClick={() => {}}
+                    icon={DummyIcon} 
+                    ariaLabel="Play Music Button"
+                />
+            );
+    
+            // Check if the default aria-label is set on the icon
+            const icon = screen.getByLabelText('Button Icon (No label specified)');
+            expect(icon).toBeInTheDocument();
+    
+            // Ensure the button's aria-label is also set correctly
+            const button = screen.getByLabelText('Play Music Button');
+            expect(button).toBeInTheDocument();
+        });
     });
 });
