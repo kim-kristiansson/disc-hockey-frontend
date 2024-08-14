@@ -17,7 +17,7 @@ const BaseIcon = ({
     height={height}
     viewBox="0 0 64 64"
     fill={color}
-    role='icon'
+    role='img'
     style={{ width: width, height: height }}
   >
     {children}
