@@ -10,6 +10,7 @@ const BaseIcon = ({
   height = '4rem',
   color = 'black',
   children,
+  ariaLabel = 'Icon (Label not specified)'
 }: BaseIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -19,6 +20,7 @@ const BaseIcon = ({
     fill={color}
     role='img'
     style={{ width: width, height: height }}
+    aria-label={ariaLabel}
   >
     {children}
   </svg>
