@@ -121,16 +121,23 @@ describe('Button component', () => {
         it('should render an icon with a width and height of 24px', () => {
             render(
               <Button 
-                    text="Play Music"
-                    onClick={() => { } }
-                    icon={<DummyIcon />} 
-                    ariaLabel={'Arial Label'} />
+                text="Play Music"
+                onClick={() => {}}
+                icon={<DummyIcon />} 
+                ariaLabel={'Arial Label'} 
+              />
             );
         
             const icon = screen.getByRole('icon');
         
-            expect(icon).toHaveAttribute('width', '24');
-            expect(icon).toHaveAttribute('height', '24');
-          });
+            const computedStyle = window.getComputedStyle(icon);
+
+            const widthInPx = remToPx(computedStyle.width);
+            const heightInPx = remToPx(computedStyle.height);
+        
+            expect(widthInPx).toBe('24px');
+            expect(heightInPx).toBe('24px');
+        });
+        
     });
 });
