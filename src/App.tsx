@@ -1,11 +1,5 @@
-import MainHeader from "./MainHeader/MainHeader";
-
 function App() {
-	return (
-		<>
-			<MainHeader />
-		</>
-	);
+	return <h1>Disc Hockey</h1>;
 }
 
 export default App;
