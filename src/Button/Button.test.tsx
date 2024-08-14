@@ -128,7 +128,7 @@ describe('Button component', () => {
               />
             );
         
-            const icon = screen.getByRole('icon');
+            const icon = screen.getByRole('img');
         
             const computedStyle = window.getComputedStyle(icon);
 
