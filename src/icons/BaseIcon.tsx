@@ -6,8 +6,8 @@ interface BaseIconProps extends IconProps {
 }
 
 const BaseIcon = ({
-  width = 64,
-  height = 64,
+  width = '4rem',
+  height = '4rem',
   color = 'black',
   children,
 }: BaseIconProps) => (
@@ -18,6 +18,7 @@ const BaseIcon = ({
     viewBox="0 0 64 64"
     fill={color}
     role='icon'
+    style={{ width: width, height: height }}
   >
     {children}
   </svg>

@@ -1,8 +1,10 @@
 import { ReactNode } from "react";
 
+type RemUnit = `${number}rem`;
+
 export interface IconProps {
-    width?: number;
-    height?: number;
+    width?: RemUnit;
+    height?: RemUnit;
     color? : string;
     children?: ReactNode;
   }
