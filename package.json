@@ -9,7 +9,7 @@
         "preview": "vite preview",
         "test": "vitest",
         "test:ui": "vitest --ui",
-        "cypress:run": "tsc cypress.config.ts --outDir dist && cypress run --config-file dist/cypress.config.js"
+        "cypress": "cypress open"
     },
     "dependencies": {
         "@vitest/ui": "^2.0.5",
