@@ -1,8 +1,11 @@
 import React from 'react'
 import { IconProps } from './IconProps.mts'
 
+type ViewBox = `0 0 ${number} ${number}`
+
 interface BaseIconProps extends IconProps {
     children: React.ReactNode
+    viewBox: ViewBox
 }
 
 const BaseIcon = ({
@@ -11,20 +14,18 @@ const BaseIcon = ({
     color = 'black',
     children,
     ariaLabel = 'Icon (Label not specified)',
+    viewBox,
+    style,
 }: BaseIconProps) => (
     <svg
+        viewBox={viewBox}
         xmlns='http://www.w3.org/2000/svg'
         width={width}
         height={height}
-        viewBox='0 0 64 64'
         fill={color}
         role='img'
-        style={{
-            width: width,
-            height: height,
-            margin: `calc(${width} / 2) calc(${height} / 2)`,
-        }}
         aria-label={ariaLabel}
+        style={style}
     >
         {children}
     </svg>
