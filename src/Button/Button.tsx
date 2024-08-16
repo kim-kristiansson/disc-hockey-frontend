@@ -25,7 +25,7 @@ const Button = ({
     onClick,
     text,
 }: ButtonProps) => {
-    const buttonClass = classNames('h-12', {
+    const buttonClass = classNames('px-2 rounded-full', {
         'bg-spotify-green hover:bg-spotify-green-dark text-white': variant === 'login',
         'cursor-not-allowed opacity-50': disabled,
     })
@@ -38,6 +38,9 @@ const Button = ({
             height='1.5rem'
             color={iconColor}
             ariaLabel={iconProps?.ariaLabel || 'Button Icon (No label specified)'}
+            style={{
+                marginRight: `calc(${'1.5rem'} / 2)`,
+            }}
         />
     ) : null
 
@@ -49,8 +52,10 @@ const Button = ({
             disabled={disabled}
             onClick={onClick}
         >
-            {IconWithSize && <span>{IconWithSize}</span>}
-            {text}
+            <div className='p-3 flex items-center'>
+                {IconWithSize && <span>{IconWithSize}</span>}
+                {text}
+            </div>
         </button>
     )
 }
