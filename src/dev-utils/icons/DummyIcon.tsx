@@ -1,10 +1,10 @@
-import BaseIcon from "../../icons/BaseIcon";
-import { IconProps } from "../../icons/IconProps";
+import BaseIcon from '../../icons/BaseIcon'
+import { IconProps } from '../../icons/IconProps.mts'
 
 const DummyIcon = (props: IconProps) => (
-  <BaseIcon {...props}>
-    <rect />
-  </BaseIcon>
-);
+    <BaseIcon {...props}>
+        <rect />
+    </BaseIcon>
+)
 
-export default DummyIcon;
+export default DummyIcon
