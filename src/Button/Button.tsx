@@ -25,10 +25,13 @@ const Button = ({
     onClick,
     text,
 }: ButtonProps) => {
-    const buttonClass = classNames('px-2 rounded-full', {
-        'bg-spotify-green hover:bg-spotify-green-dark text-white': variant === 'login',
-        'cursor-not-allowed opacity-50': disabled,
-    })
+    const buttonClass = classNames(
+        'rounded-full flex items-center pt-3 pb-3 pr-6 pl-6 max-w-full w-full',
+        {
+            'bg-spotify-green hover:bg-spotify-green-dark text-white': variant === 'login',
+            'cursor-not-allowed opacity-50': disabled,
+        }
+    )
 
     const iconColor = disabled ? '#A0AEC0' : variant === 'login' ? '#FFFFFF' : '#000000'
 
@@ -52,10 +55,8 @@ const Button = ({
             disabled={disabled}
             onClick={onClick}
         >
-            <div className='p-3 flex items-center'>
-                {IconWithSize && <span>{IconWithSize}</span>}
-                {text}
-            </div>
+            {IconWithSize && <span>{IconWithSize}</span>}
+            <span className='flex-1'>{text}</span>
         </button>
     )
 }
