@@ -5,9 +5,9 @@ const App = () => (
     <Button
         ariaLabel='Dummy Button'
         onClick={() => {
-            console.log('Pop!')
+            console.log('Click!')
         }}
-        text='Click Here To Pop A Cherry'
+        text='Click Here'
         icon={DummyIcon}
     />
 )
