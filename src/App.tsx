@@ -1,15 +1,7 @@
 import Button from './components/Button/Button'
 import DummyIcon from './dev-utils/icons/DummyIcon'
+import LoginPage from './pages/LoginPage'
 
-const App = () => (
-    <Button
-        ariaLabel='Dummy Button'
-        onClick={() => {
-            console.log('Click!')
-        }}
-        text='Click Here'
-        icon={DummyIcon}
-    />
-)
+const App = () => <LoginPage />
 
 export default App
