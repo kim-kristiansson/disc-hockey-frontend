@@ -1,4 +1,4 @@
-import Button from './Button/Button'
+import Button from './components/Button/Button'
 import DummyIcon from './dev-utils/icons/DummyIcon'
 
 const App = () => (

@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { IconProps } from '../icons/IconProps.mts'
+import { IconProps } from '../../icons/IconProps.mts'
 import React from 'react'
 
 type ButtonIconProps = Omit<IconProps, 'width' | 'height'>
