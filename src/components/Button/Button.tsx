@@ -5,17 +5,19 @@ import React from 'react'
 type ButtonIconProps = Omit<IconProps, 'width' | 'height'>
 
 interface ButtonProps {
+    type: 'button' | 'submit' | 'reset'
     variant?: 'login'
     iconProps?: ButtonIconProps
     icon?: React.ComponentType<IconProps>
     hidden?: boolean
     ariaLabel: string
     disabled?: boolean
-    onClick: () => void
+    onClick?: () => void
     text: string
 }
 
 const Button = ({
+    type,
     variant = 'login',
     iconProps,
     icon: Icon,
@@ -49,6 +51,7 @@ const Button = ({
 
     return (
         <button
+            type={type}
             className={buttonClass}
             hidden={hidden}
             aria-label={ariaLabel}
