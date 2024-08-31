@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'porter_sans_block';
+    src: url('./fonts/porter_sans_block/porter-sans-inline-block-webfont.eot');
+    src: url('./fonts/porter_sans_block/porter-sans-inline-block-webfont.eot?#iefix')
+            format('embedded-opentype'),
+        url('./fonts/porter_sans_block/porter-sans-inline-block-webfont.woff') format('woff'),
+        url('./fonts/porter_sans_block/porter-sans-inline-block-webfont.ttf') format('truetype'),
+        url('./fonts/porter_sans_block/porter-sans-inline-block-webfont.svg#porter_sans_blockblock')
+            format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.responsive-header {
+    font-size: clamp(2rem, 10vw, 4rem);
+}
