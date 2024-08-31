@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconProps } from './IconProps.mts'
+import { IconProps } from './IconProps'
 
 type ViewBox = `0 0 ${number} ${number}`
 
