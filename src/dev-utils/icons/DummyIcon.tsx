@@ -1,5 +1,5 @@
 import BaseIcon from '../../icons/BaseIcon'
-import { IconProps } from '../../icons/IconProps.mts'
+import { IconProps } from '../../icons/IconProps'
 
 const DummyIcon = (props: IconProps) => (
     <BaseIcon {...props} viewBox='0 0 512 512'>
