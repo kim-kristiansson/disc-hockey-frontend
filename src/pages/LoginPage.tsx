@@ -7,15 +7,17 @@ const LoginPage = () => {
         console.log('Button clicked!')
     }
     return (
-        <div className='flex flex-col items-center justify-center min-h-screen'>
-            <MainHeader />
-            <Button
-                type='submit'
-                ariaLabel='Login Button'
-                text='Logga in med Spotify'
-                icon={SpotifyIcon}
-                onClick={handleOnClick}
-            />
+        <div className='flex justify-center min-h-screen pt-25vh pb-25vh'>
+            <div className='flex flex-col justify-around pl-4 pr-4'>
+                <MainHeader />
+                <Button
+                    type='submit'
+                    ariaLabel='Login Button'
+                    text='Logga in med Spotify'
+                    icon={SpotifyIcon}
+                    onClick={handleOnClick}
+                />
+            </div>
         </div>
     )
 }
