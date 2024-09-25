@@ -1,5 +1,5 @@
-import LoginPage from './pages/LoginPage'
+import GameOnPage from './pages/GameOnPage/GameOnPage'
 
-const App = () => <LoginPage />
+const App = () => <GameOnPage />
 
 export default App
