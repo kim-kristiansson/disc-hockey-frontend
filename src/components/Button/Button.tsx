@@ -1,6 +1,8 @@
 import classNames from 'classnames'
 import { IconProps } from '../../icons/IconProps.ts'
 import React from 'react'
+import ButtonText from './ButtonText/ButtonText.tsx'
+import ButtonIcon from './ButtonIcon/ButtonIcon.tsx'
 
 type ButtonIconProps = Omit<IconProps, 'width' | 'height'>
 
@@ -35,20 +37,6 @@ const Button = ({
         }
     )
 
-    const iconColor = disabled ? '#A0AEC0' : variant === 'login' ? '#FFFFFF' : '#000000'
-
-    const IconWithSize = Icon ? (
-        <Icon
-            width='1.5rem'
-            height='1.5rem'
-            color={iconColor}
-            ariaLabel={iconProps?.ariaLabel || 'Button Icon (No label specified)'}
-            style={{
-                marginRight: `calc(${'1.5rem'} / 2)`,
-            }}
-        />
-    ) : null
-
     return (
         <button
             type={type}
@@ -58,8 +46,15 @@ const Button = ({
             disabled={disabled}
             onClick={onClick}
         >
-            {IconWithSize && <span>{IconWithSize}</span>}
-            <span className='flex-1'>{text}</span>
+            {Icon && (
+                <ButtonIcon
+                    icon={Icon}
+                    iconProps={iconProps}
+                    disabled={disabled}
+                    variant={variant}
+                />
+            )}
+            <ButtonText text={text} />
         </button>
     )
 }
