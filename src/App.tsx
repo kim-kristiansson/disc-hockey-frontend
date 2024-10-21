@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from './features/auth/Login'
-import Callback from './components/Callback'
+import Dashboard from './features/dashboard/Dashboard'
 
 function App() {
     return (
         <Router>
             <Routes>
                 <Route path='/' element={<Login />} />
-                <Route path='/callback' element={<Callback />} />
+                <Route path='/dashboard' element={<Dashboard />} />
             </Routes>
         </Router>
     )
