@@ -1,69 +1,30 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from 'react'
+import api from '../../services/api'
 
 const Dashboard = () => {
-    const [playlists, setPlaylists] = useState([])
-    const [newPlaylist, setNewPlaylist] = useState({
-        name: '',
-        description: '',
-    })
-
-    const accessToken = localStorage.getItem('access_token')
+    const [user, setUser] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        fetchPlaylists()
+        const fetchUser = async () => {
+            try {
+                const response = await api.get('/user/me', {
+                    withCredentials: true,
+                })
+                setUser(response.data)
+            } catch (error) {
+                console.error(error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+
+        fetchUser()
     }, [])
 
-    const fetchPlaylists = async () => {
-        const response = await axios.get(
-            `http://localhost:8000/playlists?userId=USER_ID`, // Replace USER_ID accordingly
-            {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
-        )
-        setPlaylists(response.data)
-    }
+    if (isLoading) return <div>Loading...</div>
 
-    const handleCreatePlaylist = async () => {
-        const response = await axios.post(
-            'http://localhost:8000/playlists',
-            { ...newPlaylist, userId: 'USER_ID' }, // Replace USER_ID accordingly
-            {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
-        )
-        setPlaylists([...playlists, response.data])
-        setNewPlaylist({ name: '', description: '' })
-    }
-
-    return (
-        <div>
-            <h1>Your Playlists</h1>
-            <ul>
-                {playlists.map((playlist) => (
-                    <li key={playlist.id}>{playlist.name}</li>
-                ))}
-            </ul>
-            <h2>Create New Playlist</h2>
-            <input
-                type='text'
-                placeholder='Name'
-                value={newPlaylist.name}
-                onChange={(e) => setNewPlaylist({ ...newPlaylist, name: e.target.value })}
-            />
-            <input
-                type='text'
-                placeholder='Description'
-                value={newPlaylist.description}
-                onChange={(e) => setNewPlaylist({ ...newPlaylist, description: e.target.value })}
-            />
-            <button onClick={handleCreatePlaylist}>Create</button>
-        </div>
-    )
+    return <div>{user ? 'ok' : 'ko'}</div>
 }
 
 export default Dashboard
