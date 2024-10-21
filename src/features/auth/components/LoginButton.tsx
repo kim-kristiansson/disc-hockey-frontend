@@ -1,5 +1,5 @@
 import Button from '../../../components/Button/Button'
-import SpotifyIcon from '../../../dev-utils/icons/SpotifyIcon'
+import SpotifyIcon from '../../../icons/SpotifyIcon'
 
 const LoginButton = () => {
     function handleOnClick(): void {
